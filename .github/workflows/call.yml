@@ -23,7 +23,7 @@ jobs:
       - id: build_downsteam_job_link
         run: echo "dark4igi/downsteam/.github/workflows/reusable-workflow.yml@${{ needs.prepare_run.outputs.branch }}"
       - id: build_downsteam_job_link_env
-        run: echo "link=$(echo dark4igi/downsteam/.github/workflows/reusable-workflow.yml@${{ needs.prepare_run.outputs.branch }})"
+        run: echo "link=$(echo dark4igi/downsteam/.github/workflows/reusable-workflow.yml@${{ needs.prepare_run.outputs.branch }})"  >> $GITHUB_OUTPUT
 
   test2:
     runs-on: ubuntu-latest
