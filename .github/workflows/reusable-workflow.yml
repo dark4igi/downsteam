@@ -39,10 +39,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: example_job
     steps:
-      - id: "output first"
+      - id: output-first
         run: echo {{ example_job.outputs.first }}
-      - id: "output second"
+      - id: output-second
         run: echo {{ example_job.outputs.second }}
-      - id: "output branch"
+      - id: output-branch
         run: echo {{ prepare_run.outputs.branch }}
     
