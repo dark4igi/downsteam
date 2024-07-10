@@ -31,9 +31,9 @@ jobs:
     steps:
       - run: echo ${{ needs.test.outputs.link }}
         
-  # job1:
-  #   needs: prepare_run
-  #   uses: dark4igi/downsteam/.github/workflows/reusable-workflow.yml@main
+  job1:
+    needs: test
+    uses: ${{ needs.test.outputs.link }}
 
                                 
 
