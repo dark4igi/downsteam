@@ -40,9 +40,9 @@ jobs:
     needs: example_job
     steps:
       - id: output-first
-        run: echo {{ example_job.outputs.first }}
+        run: echo ${{ example_job.outputs.first }}
       - id: output-second
-        run: echo {{ example_job.outputs.second }}
+        run: echo ${{ example_job.outputs.second }}
       - id: output-branch
-        run: echo {{ prepare_run.outputs.branch }}
+        run: echo ${{ prepare_run.outputs.branch }}
     
