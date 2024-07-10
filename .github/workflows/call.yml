@@ -15,21 +15,32 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: prepare_run
+    outputs:
+      link: ${{ steps.build_downsteam_job_link_env.outputs.link }}
     steps:
       - id: test
         run: echo ${{ needs.prepare_run.outputs.branch }}
       - id: build_downsteam_job_link
         run: echo "dark4igi/downsteam/.github/workflows/reusable-workflow.yml@${{ needs.prepare_run.outputs.branch }}"
-  job1:
-    needs: prepare_run
-    uses: dark4igi/downsteam/.github/workflows/reusable-workflow.yml@main
+      - id: build_downsteam_job_link_env
+        run: echo "link=$(echo dark4igi/downsteam/.github/workflows/reusable-workflow.yml@${{ needs.prepare_run.outputs.branch }})"
+
+  test2:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - run: echo ${{ needs.test.outputs.link }}
+        
+  # job1:
+  #   needs: prepare_run
+  #   uses: dark4igi/downsteam/.github/workflows/reusable-workflow.yml@main
 
                                 
 
-  job2:
-    runs-on: ubuntu-latest
-    needs: job1
-    steps:
-      - run: echo ${{ needs.prepare_run.outputs.branch }} 
-      - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
-      - run: echo ${{ needs.job1.outputs.branch }}
+  # job2:
+  #   runs-on: ubuntu-latest
+  #   needs: job1
+  #   steps:
+  #     - run: echo ${{ needs.prepare_run.outputs.branch }} 
+  #     - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
+  #     - run: echo ${{ needs.job1.outputs.branch }}
