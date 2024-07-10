@@ -17,9 +17,9 @@ jobs:
     steps:
       - id: test
         run: echo ${{ needs.prepare_run.outputs.branch }}
-  # job1:
-  #   needs: prepare_run
-  #   uses: "dark4igi/downsteam/.github/workflows/reusable-workflow.yml@${{ needs.prepare_run.outputs.branch }}"
+  job1:
+    needs: prepare_run
+    uses: "dark4igi/downsteam/.github/workflows/reusable-workflow.yml@$main"
 
   # job2:
   #   runs-on: ubuntu-latest
