@@ -18,7 +18,7 @@ jobs:
       branch: ${{ steps.get_branch.outputs.branch }}
     steps:
       - id: get_branch
-        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
         
   example_job:
     name: Generate output
@@ -44,5 +44,5 @@ jobs:
       - id: output-second
         run: echo ${{ needs.example_job.outputs.second }}
       - id: output-branch
-        run: echo ${{ needs.prepare_run.outputs.branch }}
+        run: echo $branch
     
