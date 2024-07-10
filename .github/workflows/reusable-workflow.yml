@@ -18,6 +18,8 @@ jobs:
       branch: ${{ steps.get_branch.outputs.branch }}
     steps:
       - id: get_branch
+        run: echo ${GITHUB_REF#refs/heads/}
+      - id: get_branch
         run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
         
   example_job:
