@@ -10,6 +10,9 @@ on:
       secondword:
         description: "The second output string"
         value: ${{ jobs.example_job.outputs.output2 }}
+      branch: 
+        description: "branch"
+        value: ${{ jobs.example_job.outputs.branch }}
 
 jobs:
   example_job:
@@ -19,8 +22,11 @@ jobs:
     outputs:
       output1: ${{ steps.step1.outputs.firstword }}
       output2: ${{ steps.step2.outputs.secondword }}
+      branch: ${{ steps.get_branch.outputs.branch }}
     steps:
       - id: step1
         run: echo "firstword=hello" >> $GITHUB_OUTPUT
       - id: step2
         run: echo "secondword=world" >> $GITHUB_OUTPUT
+      - id: get_branch
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
