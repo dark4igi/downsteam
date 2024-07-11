@@ -38,5 +38,5 @@ jobs:
       - id: output_words
         run: echo ${{needs.example_job.outputs.output1}} ${{needs.example_job.outputs.output2}}
       - id: output_branch
-        run: echo ${{needs.example_job.outputs.branch}
+        run: echo ${{needs.example_job.outputs.branch}}
     
