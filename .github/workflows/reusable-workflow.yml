@@ -30,3 +30,13 @@ jobs:
         run: echo "secondword=world" >> $GITHUB_OUTPUT
       - id: get_branch
         run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
+
+  output_job:
+    name: output
+    runs-on: ubuntu-latest
+    steps:
+      - id: output_words
+        run: echo ${{needs.example_job.outputs.output1}} ${{needs.example_job.outputs.output2}}
+      - id: output_branch
+        run: echo ${{needs.example_job.outputs.branch}
+    
