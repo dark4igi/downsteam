@@ -47,9 +47,9 @@ jobs:
     needs: example_job
     steps:
       - id: output-first
-        run: echo ${{ needs.example_job.outputs.first }}
+        run: echo ${{ needs.example_job.outputs.firstword }}
       - id: output-second
-        run: echo ${{ needs.example_job.outputs.second }}
+        run: echo ${{ needs.example_job.outputs.secondword }}
       - id: output-branch
         run: echo ${{ needs.example_job.outputs.branch }}
     
