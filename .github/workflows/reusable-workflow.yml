@@ -72,6 +72,10 @@ jobs:
         run: echo ${{ vars.FOO }}
       - id: echo-bar
         run: echo ${{ vars.BAR }}
+      - id: echo-secret
+        run: echo ${{ secrets.SUPER }}
+      - id: echo-branch
+        run: echo ${{ needs.prepare_run.outputs.branch }}
 
   
       
