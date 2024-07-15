@@ -6,6 +6,7 @@ on:
 jobs:
   job1:
     uses: dark4igi/downsteam/.github/workflows/reusable-workflow.yml@main
+    secrets: inherit
 
   job2:
     runs-on: ubuntu-latest
