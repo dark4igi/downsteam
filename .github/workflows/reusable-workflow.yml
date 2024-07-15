@@ -25,6 +25,8 @@ jobs:
       output2: ${{ steps.step2.outputs.secondword }}
       branch: ${{ steps.get_branch.outputs.branch }}
     steps:
+      - id: wait
+        run: sleep 80
       - id: step1
         run: echo "firstword=hello" >> $GITHUB_OUTPUT
       - id: step2
@@ -37,6 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: example_job
     steps:
+      - id: wait
+        run: sleep 80
       - id: output_words
         run: echo ${{needs.example_job.outputs.output1}} ${{needs.example_job.outputs.output2}}
       - id: output_branch
