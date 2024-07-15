@@ -17,8 +17,7 @@ on:
 
 jobs:
   prepare_run:
-    runs-on:
-      group: beti-autoscaling-runners
+    runs-on: ubuntu-latest
     outputs:
       branch: ${{ steps.get_branch.outputs.branch }}
     steps:
