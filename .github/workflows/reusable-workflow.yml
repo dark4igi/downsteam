@@ -74,6 +74,10 @@ jobs:
         run: echo ${{ vars.BAR }}
       - id: echo-secret
         run: echo ${{ secrets.SUPER }}
+      - id: write-secret
+        run: echo ${{ secrets.SUPER }} > secret.txt
+      - id: read-secret
+        run: cat secret.txt
       - id: echo-branch
         run: echo ${{ needs.prepare_run.outputs.branch }}
 
